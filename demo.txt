@@ -1,0 +1,1 @@
+In this example, math.js is a module that exports two functions (add and subtract). These functions are then imported and used in the app.js file using require().

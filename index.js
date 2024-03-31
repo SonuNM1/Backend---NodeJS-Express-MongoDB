@@ -1,47 +1,29 @@
-// console.log('hello')
 
-// import {sum} from './lib.js'
+const http = require('http') ; 
 
-const fs = require('fs')
+const fs = require('fs') ; 
 
-const lib = require('./lib.js')
+const index = fs.readFileSync('index.html', 'utf-8') ; 
 
+const data = fs.readFileSync('data.json', 'utf-8') ; 
 
-// asynchronous file read 
+// const data = {age:5}
 
-const startTime = performance.now()
+const server = http.createServer((req,res)=>{
 
-const asynctxt = fs.readFile('demo.txt', 'utf-8', (err, text)=>{
-    console.log(text) ; 
+    switch(req.url){
+        case '/':
+            res.setHeader('Content-Type', 'text/html');
+            res.end(index);
+            break ;
+        case '/api':
+            res.setHeader('Content-type', 'application/json') ;
+            res.end(data) ;
+            break ;
+        default:
+            res.writeHead(404) ;
+            res.end() ;  
+    }
 })
 
-const endTime = performance.now() ; 
-
-console.log(`async time: ${endTime-startTime}`);
-
-// synchronous file read 
-
-const t1 = performance.now() ; 
-
-const synctxt = fs.readFileSync('demo.txt', 'utf-8')
-
-console.log(synctxt) ;
-
-const t2 = performance.now() ; 
-
-console.log(`sync time: ${t2-t1}`)
-
-
-
-
-/*
-const bufferText = fs.readFileSync('demo.txt') ; 
-
-const text = bufferText.toString()
-
-console.log(text) ; 
-*/
-
-
-
-// console.log(lib.sum(3,4)) ; 
+server.listen(8080)

@@ -1,0 +1,19 @@
+CHAPTER-2: WEB SERVER
+
+
+
+1. Explain client server architecture: browser, server ; browser, server and database 
+
+2. HTTP request and response 
+
+3. Difference response status, their meaning and use 
+
+4. Network tab in browser console, why is it important to understand for backend development 
+
+5. throttling 
+
+6. HTTP module in NodeJS 
+
+7. alt shift f -> format json data 
+
+8. req.url 

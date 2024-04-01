@@ -17,3 +17,5 @@ CHAPTER-2: WEB SERVER
 7. alt shift f -> format json data 
 
 8. req.url 
+
+9. JSON.parse() and JSON.string()

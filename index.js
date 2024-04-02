@@ -3,23 +3,19 @@ const morgan = require("morgan");
 const server = express();
 const productController = require('./Controller/product')
 
-// bodyParser
+const productRouter = require('./Routes/product') ; 
+
+
+// Middlewares - bodyParser
 
 server.use(express.json());
 server.use(morgan("dev"));
 server.use(express.static("public"));
+server.use('/', productRouter.router)
 
 // api endpoints 
 
-server.post("/products", productController.createProduct);
 
-server.get("/products", productController.getAllProduct);
-
-server.get("/products/:id", productController.getProduct);
-
-server.put("/products/:id", productController.updateProduct);
-
-server.delete("/products/:id", productController.deleteProduct);
 
 
 // listening the server on PORT 

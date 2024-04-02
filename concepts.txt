@@ -1,21 +1,57 @@
-CHAPTER-2: WEB SERVER
+CHAPTER 3 - Express Framework 
 
 
+1. Express Framework 
 
-1. Explain client server architecture: browser, server ; browser, server and database 
+2. Server through http module Vs Express framework 
 
-2. HTTP request and response 
+3. server.get('/', (req, res)=>{
+    res.json({type:'GET'}) ; 
+})
 
-3. Difference response status, their meaning and use 
+server.get('/', (req, res)=>{
+    res.json({type:'GET1'}) ; 
+})
 
-4. Network tab in browser console, why is it important to understand for backend development 
+which will be executed first, if defined on the same route ? 
 
-5. throttling 
 
-6. HTTP module in NodeJS 
+4. JSON.parse()
 
-7. alt shift f -> format json data 
+5. JSON.stringify()
 
-8. req.url 
+6. higer order function 
 
-9. JSON.parse() and JSON.string()
+7. req.method
+
+8. postman
+
+9. Express framework 
+
+10. server through http module vs. express framework 
+
+11. absolute path vs relative path 
+
+12. why chrome browser only gives GET request (not others)
+
+13. API Endpoint / route
+
+14. Middleware function 
+
+15. logger (and the imp of it )
+
+16. server log (use of it, why do companies create it )
+
+17. types of middleware (application level middleware , route level middleware , built in middleware , error-handling middleware , third party middleware )
+
+18. req.query()
+
+19. express.json() , express.urlencoded() , express.static('public')
+
+20. static hosting 
+
+21. cookie parser -> third party middleware
+
+22. morgan -> tiny, combined, dev, default 
+
+23. request parameter (req.params)

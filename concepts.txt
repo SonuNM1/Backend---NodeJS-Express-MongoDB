@@ -1,57 +1,16 @@
-CHAPTER 3 - Express Framework 
+Chapter 4 - REST API 
 
 
-1. Express Framework 
+1. REST API standards 
 
-2. Server through http module Vs Express framework 
+2. Higher order function 
 
-3. server.get('/', (req, res)=>{
-    res.json({type:'GET'}) ; 
-})
+3. convert the parameter value to number , whats the need to do so 
 
-server.get('/', (req, res)=>{
-    res.json({type:'GET1'}) ; 
-})
+4. CRUD Operation
 
-which will be executed first, if defined on the same route ? 
+5. Learn how to perform CRUD on dummy products data 
 
+5. splice() method to update element in an array 
 
-4. JSON.parse()
-
-5. JSON.stringify()
-
-6. higer order function 
-
-7. req.method
-
-8. postman
-
-9. Express framework 
-
-10. server through http module vs. express framework 
-
-11. absolute path vs relative path 
-
-12. why chrome browser only gives GET request (not others)
-
-13. API Endpoint / route
-
-14. Middleware function 
-
-15. logger (and the imp of it )
-
-16. server log (use of it, why do companies create it )
-
-17. types of middleware (application level middleware , route level middleware , built in middleware , error-handling middleware , third party middleware )
-
-18. req.query()
-
-19. express.json() , express.urlencoded() , express.static('public')
-
-20. static hosting 
-
-21. cookie parser -> third party middleware
-
-22. morgan -> tiny, combined, dev, default 
-
-23. request parameter (req.params)
+6. PUT vs PATCH - Which one preferred 

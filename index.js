@@ -1,93 +1,99 @@
+const fs = require("fs");
 
-const fs = require('fs') ; 
+const index = fs.readFileSync("index.html", "utf-8");
+const data = JSON.parse(fs.readFileSync("data.json", "utf-8"));
 
-const index = fs.readFileSync('index.html', 'utf-8') ; 
-const data = JSON.parse(fs.readFileSync('data.json', 'utf-8')) ; 
+const morgan = require("morgan");
 
-const morgan = require('morgan') ; 
-
-const products = data.product 
+const products = data.products;
 
 // Express Server
 
-const express = require('express')
+const express = require("express");
 
-const server = express()
+const server = express();
 
-const date = new Date().toLocaleString() ; 
+const date = new Date().toLocaleString();
 
-// Application level middleware 
+// Application level middleware
 
-server.use(express.json()) ; 
+server.use(express.json());
 
 // server.use(express.urlencoded())
 
-server.use(morgan('dev'))
+server.use(morgan("dev"));
 
-server.use(express.static('public')) ; 
-
-// server.use((req, res, next)=>{
-//     console.log(req.method, req.ip, req.hostname , req.baseUrl , req.get('User-Agent'), date ) ; 
-//     next() ; 
-// })
-
-
-const auth = (req, res, next)=>{
-    // console.log(req.query) ; 
-    // if(req.body.password === '123' ){
-    //     next() ;
-    // }else{
-    //     res.sendStatus(401) ; 
-    // } 
-    next() ; 
-}
-
-// server.use(auth) ; 
+server.use(express.static("public"));
 
 // API - Endpoint - Route
 
-server.get('/:id', auth, (req, res)=>{
-    console.log(req.params) ; 
-    res.json({type:'GET'}) ; 
-})
-
-server.post('/', auth , (req, res)=>{
-    res.json({type:'POST'}) ; 
-})
-
-server.put('/', (req, res)=>{
-    res.json({type:'PUT'}) ; 
-})
-
-server.patch('/', (req, res)=>{
-    res.json({type:'PATCH'}) ; 
-})
-
-server.delete('/', (req, res)=>{
-    res.json({type:'DELETE'}) ; 
-})
+// API ROOT, base URL,
 
 
+// Create POST /products
+
+server.post("/products", (req, res) => {
+    console.log(req.body);
+    products.push(req.body);
+    res.status(201).json(req.body);
+  });
+
+// Read GET /produts
+
+server.get("/products", (req, res) => {
+
+  /*const firstDescription = products[0].description;
+  res.json(firstDescription);
+
+  const descriptions = products.map((product) => {
+    return product.description;
+  });
+  res.json(descriptions);*/
+
+// console.log(products) ;   
+
+res.json(products) ; 
+});
+
+// READ GET /products/:id
+
+server.get("/products/:id", (req, res) => {
+  const id = +req.params.id; // conver to number
+  const product = products.find((p) => p.id === id);
+
+  res.json(product);
+});
 
 
+// Update PUT /products/:id
+
+server.put("/products/:id", (req, res) => {
+    const id = +req.params.id; // conver to number
+    const productIndex = products.findIndex((p) => p.id === id);
+    products.splice(productIndex, 1, {...req.body, id:id}) ; 
+    res.status(201).json();
+  });
+
+// Update PATCH /products/:id 
+
+// server.patch("/products/:id", (req, res) => {
+//     const id = +req.params.id; // conver to number
+//     const productIndex = products.findIndex((p) => p.id === id);
+//     products.splice(productIndex, 1, {...req.body, id:id}) ; 
+//     res.status(201).json();
+//   });
 
 
-server.get('/demo', (req, res)=>{
-    // res.sendStatus(404) ; 
-    // res.json(data)
-    // res.sendFile("C:\Users\HP\OneDrive\Desktop\Placement Do's\Backend\Backend - NodeJS, Express, MongoDB\index.html") ; 
-    res.status(201).send('hello') ; 
-})
+// Delete DELETE /products/:id
+
+server.delete("/products/:id", (req, res) => {
+    const id = +req.params.id; // conver to number
+    const productIndex = products.findIndex((p) => p.id === id);
+    products.splice(productIndex, 1, {...req.body, id:id}) ; 
+    res.status(201).json();
+  });
 
 
-
-
-
-
-
-server.listen(3000, ()=>{
-    console.log('Server started') ; 
-})
-
-
-
+server.listen(3000, () => {
+  console.log("Server started");
+});

@@ -1,16 +1,2 @@
-Chapter 4 - REST API 
+Chapter 5 - MVC Architecture 
 
-
-1. REST API standards 
-
-2. Higher order function 
-
-3. convert the parameter value to number , whats the need to do so 
-
-4. CRUD Operation
-
-5. Learn how to perform CRUD on dummy products data 
-
-5. splice() method to update element in an array 
-
-6. PUT vs PATCH - Which one preferred 

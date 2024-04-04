@@ -1,2 +1,31 @@
-Chapter 5 - MVC Architecture 
+Chapter 6 - MongoDB
+
+
+SQL vs NoSQL 
+
+Document - Collection similarity vs table tuple 
+
+object id in MongoDB
+
+mongodb community server, atlas , compass difference 
+
+mongoshell commands 
+
+cursor functions (sort , limit)
+
+projection 
+
+upsert (update + insert)
+
+MongoDB Atlas tutorial 
+
+upsert vs replace 
+
+set vs replace 
+
+$set 
+
+hiding the object-id of products 
+
+
 
